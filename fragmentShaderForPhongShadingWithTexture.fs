@@ -57,16 +57,16 @@ struct DirectionLight {
 };
 
 
-#define NR_POINT_LIGHTS 1
+#define NR_POINT_LIGHTS 2
 
 in vec3 FragPos;
 in vec3 Normal;
 in vec2 TexCoords;
 
 uniform vec3 viewPos;
-uniform PointLight pointLights[1];
-uniform SpotLight spotLights[1];
-uniform DirectionLight directionLights[1];
+uniform PointLight pointLights[10];
+uniform SpotLight spotLights[10];
+uniform DirectionLight directionLights[10];
 uniform Material material;
 
 // function prototypes
@@ -93,7 +93,9 @@ void main()
     // point lights
     
     result += CalcSpotLight(material, spotLights[0], N, FragPos, V);
+
     result += CalcPointLight(material, pointLights[0], N, FragPos, V);  
+    result += CalcPointLight(material, pointLights[1], N, FragPos, V);  
     result += CalcDirectLight(material, directionLights[0], N, FragPos, V);
     FragColor = vec4(result, 1.0);
 }

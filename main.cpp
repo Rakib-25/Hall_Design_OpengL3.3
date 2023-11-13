@@ -21,6 +21,8 @@
 #include "stb_image.h"
 #include <iostream>
 #include "Sphere2.h"
+#pragma warning(disable:4996)
+
 
 using namespace std;
 
@@ -45,6 +47,17 @@ void door(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
 //void drawFish(Shader& lightingShader, glm::mat4 model);
 //void pond(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
 void pond(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
+void Tree_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
+void Clock(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
+void getCurrentTime(int& hours, int& minutes, int& seconds);
+
+
+
+
+
+float rotateClock = 0;
+//bool sign = 1;
+
 
 
 
@@ -81,8 +94,8 @@ public:
         /// Fish
         lightingShader.use();
         lightingShader.setMat4("model", model);
-        lightingShader.setVec3("material.ambient", glm::vec3(1.0f, 0.6f, 0.0f));
-        lightingShader.setVec3("material.diffuse", glm::vec3(1.0f, 0.6f, 0.0f));
+        lightingShader.setVec3("material.ambient", glm::vec3(0.0f, 0.6f, 0.0f));
+        lightingShader.setVec3("material.diffuse", glm::vec3(0.0f, 0.6f, 0.0f));
         lightingShader.setVec3("material.specular", glm::vec3(1.0f, 1.0f, 1.0f));
         lightingShader.setFloat("material.shininess", 32.0f);
 
@@ -294,6 +307,64 @@ vector<float>Fish = {
 0.2400, 0.5050, 5.1000,
 };
 
+vector<float>Tree = {
+-0.0500, 2.2050, 5.1000,
+-0.1100, 2.2150, 5.1000,
+-0.1850, 2.1950, 5.1000,
+-0.2350, 2.1400, 5.1000,
+-0.2450, 2.0400, 5.1000,
+-0.2550, 1.9400, 5.1000,
+-0.2650, 1.8450, 5.1000,
+-0.2650, 1.7200, 5.1000,
+-0.2650, 1.5700, 5.1000,
+-0.2650, 1.4600, 5.1000,
+-0.2700, 1.3300, 5.1000,
+-0.2650, 1.1650, 5.1000,
+-0.2650, 1.0350, 5.1000,
+-0.2700, 0.8650, 5.1000,
+-0.2850, 0.7200, 5.1000,
+-0.3050, 0.6200, 5.1000,
+-0.3150, 0.4700, 5.1000,
+-0.3200, 0.3050, 5.1000,
+-0.3600, 0.1700, 5.1000,
+-0.3850, 0.1000, 5.1000,
+-0.4100, 0.0200, 5.1000,
+-0.4450, -0.0450, 5.1000,
+-0.4600, -0.0750, 5.1000,
+};
+
+vector<float>leaf = {
+-0.0100, 2.3600, 5.1000,
+-0.0550, 2.3600, 5.1000,
+-0.1550, 2.3800, 5.1000,
+-0.2900, 2.3700, 5.1000,
+-0.3900, 2.3350, 5.1000,
+-0.4150, 2.2350, 5.1000,
+-0.4450, 2.1200, 5.1000,
+-0.5000, 2.0900, 5.1000,
+-0.5700, 2.0800, 5.1000,
+-0.6350, 2.0700, 5.1000,
+-0.7000, 2.0450, 5.1000,
+-0.8000, 2.0100, 5.1000,
+-0.8650, 1.9800, 5.1000,
+-0.9100, 1.9300, 5.1000,
+-0.9200, 1.8900, 5.1000,
+-0.9400, 1.7750, 5.1000,
+-0.9300, 1.5650, 5.1000,
+-0.9150, 1.5200, 5.1000,
+-0.8150, 1.4450, 5.1000,
+-0.7250, 1.4000, 5.1000,
+-0.6000, 1.3650, 5.1000,
+-0.4650, 1.3550, 5.1000,
+-0.3700, 1.3550, 5.1000,
+-0.2800, 1.3550, 5.1000,
+-0.2300, 1.3550, 5.1000,
+-0.1800, 1.3650, 5.1000,
+-0.1250, 1.3750, 5.1000,
+-0.1150, 1.3800, 5.1000,
+-0.0650, 1.3850, 5.1000,
+};
+
 
 
 // settings
@@ -331,7 +402,9 @@ glm::vec3 pointLightPositions[] = {
     glm::vec3(0.0f,  1.5f,  -0.75f),
     glm::vec3(0.0f,  1.5f,  0.0f),
     glm::vec3(1.0f,  4.5f,  0.5f),
-    glm::vec3(0.0f,  3.0f,  0.0f)
+    glm::vec3(0.0f,  3.0f,  0.0f),
+    glm::vec3(0.0f,  3.5f,  5.0f)
+
 };
 PointLight pointlight1(
 
@@ -382,6 +455,18 @@ PointLight pointlight4(
     4       // light number
 );
 
+PointLight pointlight5(
+
+    pointLightPositions[4].x , pointLightPositions[4].y , pointLightPositions[4].z ,  // position
+    0.07f, 0.0f, 0.0f,     // ambient
+    0.7f, 0.f, 0.f,      // diffuse
+    0.7f, 0.7f, 0.7f,         // specular
+    1.0f,   //k_c
+    0.09f,  //k_l
+    0.032f, //k_q
+    5      // light number
+);
+
 
 // light settings
 bool onOffPointToggle = true;
@@ -415,9 +500,12 @@ float door_open1 = 0;
 float door_closed = 0;
 float door_closed1 = 0;
 
-Curve* fis;
-Cube* tmp,*foam,*footpath,*fazlul, *room_window, *gate_left, *gate_right, *fazlul_lekha, *sher, *pillow, *pillow1,*head,*relling, *head1, *floor1, *roof, *wall, *road1, *devider, *grass, * field, *door1, *field1, * field2;
+Curve* fis, *tre , *lef;
+Cube* tmp,*foam,*footpath,*fazlul, *clock1, *room_window, *gate_left, *gate_right, *fazlul_lekha, *sher, *pillow, *pillow1,*head,*relling, *head1, *floor1, *roof, *wall, *road1, *devider, *grass, * field, *door1, *field1, * field2;
 Sphere2* sphere;
+
+
+Sphere2 clock_bell = Sphere2();
 
 int ind = 0;
 
@@ -912,6 +1000,24 @@ int main()
     fazlul = &cube31;
 
 
+    //clock
+    diffuseMapPath = "images/clock.png";
+    specularMapPath = "images/clock.png";
+    diffMap = loadTexture(diffuseMapPath.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+    specMap = loadTexture(specularMapPath.c_str(), GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+    Cube cube38 = Cube(diffMap, specMap, 32, 0.0f, 0.0f, 1.0f, 1.0f);
+    clock1 = &cube38;
+
+    //kata
+
+
+
+
+
+
+
+
+
 
     diffuseMapPath = "images/sher.png";
     specularMapPath = "images/sher.png";
@@ -973,6 +1079,11 @@ int main()
 
     Curve fish(Fish);
     fis = &fish;
+    Curve tree(Tree);
+    tre = &tree;
+
+    Curve Leaf(leaf);
+    lef = &Leaf;
 
 
     while (!glfwWindowShouldClose(window))
@@ -1005,6 +1116,8 @@ int main()
         // point light 4
         pointlight4.setUpPointLight(lightingShader);
 
+        pointlight5.setUpPointLight(lightingShader);
+        
         
         // activate shader
         lightingShader.use();
@@ -1099,6 +1212,8 @@ int main()
         pointlight3.setUpPointLight(lightingShaderWithTexture);
         // point light 4
         pointlight4.setUpPointLight(lightingShaderWithTexture);
+
+        pointlight5.setUpPointLight(lightingShaderWithTexture);
 
       
 
@@ -1263,15 +1378,38 @@ void FazlulHaqueHall(unsigned int& cubeVAO,unsigned int&cVAO, Shader& lightingSh
     glm::mat4 translate2 = glm::mat4(1.0f);
     glm::mat4 translate3 = glm::mat4(1.0f);
     glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 scale2 = glm::mat4(1.0f);
     glm::mat4 rotate = glm::mat4(1.0f);
     scale = glm::scale(model, glm::vec3(1, 1, 1));
     translate = glm::translate(model, glm::vec3(-0.5, -2, -12));
     model = alTogether * scale * translate;
 
 
-
     road(cubeVAO, lightingShader, model, lightingShaderWithTexture);
-    fis->draw(lightingShader, model);
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(0.5, 0, 0));
+    model = alTogether * translate2* scale * translate;
+
+    Tree_Making(cubeVAO, cVAO, lightingShader, model, lightingShaderWithTexture);
+    
+    for (int i = -3; i < 3; i++) {
+
+        translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(-i*20 + 0.5, 0, 18));
+        model = alTogether * translate2 * scale * translate;
+
+        Tree_Making(cubeVAO, cVAO, lightingShader, model, lightingShaderWithTexture);
+    }
+
+
+    for (int i = 0; i < 3; i++) {
+
+        translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(i * 20 + 0.5, 0, -45));
+        model = alTogether * translate2 * scale * translate;
+
+        Tree_Making(cubeVAO, cVAO, lightingShader, model, lightingShaderWithTexture);
+    }
+
+    
     
     
     for (int i = -25; i < 15; i+=10) {
@@ -1315,7 +1453,80 @@ void FazlulHaqueHall(unsigned int& cubeVAO,unsigned int&cVAO, Shader& lightingSh
 }
 
 
+void Tree_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture)
+{
+    glm::mat4 model = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 translate2 = glm::mat4(1.0f);
+    glm::mat4 translate3 = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 scale2 = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(1, 4, 1));
+    translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
+    model = alTogether * scale * translate;
 
+    tre->draw(lightingShader, model);
+
+    rotate = glm::mat4(1.0f);
+
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(-0.3, 5, -0.2));
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.7, 1.5, 0.6));
+
+    rotate = glm::rotate(rotate, glm::radians(45.0f), glm::vec3(0, 0, 1));
+    model = alTogether *  translate2 * rotate * scale * translate  * glm::mat4(1.0f);
+    tre->draw(lightingShader, model);
+
+
+    rotate = glm::mat4(1.0f);
+
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(-0.2, 6, -0.2));
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.6, 1.2, 0.5));
+
+    rotate = glm::rotate(rotate, glm::radians(-45.0f), glm::vec3(0, 0, 1));
+    model = alTogether * translate2 * rotate * scale * translate * glm::mat4(1.0f);
+    tre->draw(lightingShader, model);
+
+    rotate = glm::mat4(1.0f);
+
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(-0.3, 7, -0.2));
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.5, 1, 0.4));
+
+    rotate = glm::rotate(rotate, glm::radians(45.0f), glm::vec3(0, 0, 1));
+    model = alTogether * translate2 * rotate * scale * translate * glm::mat4(1.0f);
+    tre->draw(lightingShader, model);
+
+    rotate = glm::mat4(1.0f);
+
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(-0.2, 7.5, -0.2));
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.4, 0.8, 0.3));
+
+    rotate = glm::rotate(rotate, glm::radians(-45.0f), glm::vec3(0, 0, 1));
+    model = alTogether * translate2 * rotate * scale * translate * glm::mat4(1.0f);
+    tre->draw(lightingShader, model);
+
+
+    rotate = glm::mat4(1.0f);
+
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(3.6, -1, 1.3));
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(8, 6, 4));
+
+    rotate = glm::rotate(rotate, glm::radians(-45.0f), glm::vec3(0, 0, 1));
+    model = alTogether * translate2 * scale * translate * glm::mat4(1.0f);
+    lef->draw(lightingShader, model);
+
+
+}
 
 
 void piller(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture)
@@ -1340,6 +1551,128 @@ void piller(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, g
 
 
 
+// ********time*********
+void getCurrentTime(int& hours, int& minutes, int& seconds) {
+    time_t currentTime = time(nullptr); // Get current UNIX timestamp
+    struct tm* timeinfo;
+    timeinfo = localtime(&currentTime);
+
+    seconds = timeinfo->tm_sec;
+    minutes = timeinfo->tm_min;
+    hours = timeinfo->tm_hour;
+}
+
+
+
+void Clock(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture)
+{
+
+    glm::mat4 model = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 translate2 = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 rotateYMatrix = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+
+    // clock
+    shaderActivate(lightingShaderWithTexture);
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.1, 0.3, 0.3));
+    translate = glm::translate(model, glm::vec3(-1.35f, 1.1f + 0.13f - 0.03 - 0.03, -3.15f + 0.03f - 0.02 - 0.05));
+    model = alTogether * translate * scale;
+    /*ourShader.setMat4("model", model);
+    ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+    */
+    //shaderActivate(lightingShader);
+    clock1->drawCubeWithTexture(lightingShaderWithTexture, model);
+
+    //shaderActivate(ourShader);
+    if (rotateClock >= 40) {
+        sign = 0;
+    }
+    else if (rotateClock <= -40) {
+        sign = 1;
+    }
+    if (sign == 1) {
+        rotateClock += 5;
+    }
+    else
+        rotateClock -= 5;
+
+    glm::mat4 translate_origin = glm::mat4(1.0f);
+    glm::mat4 translate4 = glm::mat4(1.0f);
+    model = glm::mat4(1.0f);
+    translate_origin = glm::translate(model, glm::vec3(0.0, 0.0, 0.0));
+    scale = glm::scale(model, glm::vec3(0.02, -0.3, 0.03));
+    translate = glm::translate(model, glm::vec3(-1.35f, 0.83f + 0.3f + 0.1, -3.04f));
+    glm::mat4 rotateM = glm::rotate(model, glm::radians(0.0f + rotateClock), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = alTogether * translate * rotateM * translate_origin * scale;
+    
+   
+    drawCube(cubeVAO, lightingShader, model, 1, 0.4, 0.06);
+
+
+    shaderActivate(lightingShaderWithTexture);
+    model = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(0.02, 0.04, 0.04));
+    glm::mat4 rotateb = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    translate = glm::translate(model, glm::vec3(-1.35f, 0.8f + 0.3f + 0.1, -3.03f));
+    translate4 = glm::translate(model, glm::vec3(0, 0.3, 0));
+    model = alTogether * translate * rotateM * rotateb * translate4 * translate_origin * scale;
+    sphere->drawSphere(lightingShaderWithTexture, model);
+    shaderActivate(lightingShader);
+
+    int hours, minutes, seconds;
+    getCurrentTime(hours, minutes, seconds);
+    hours = (hours + 6) % 12;
+
+
+    // second
+    shaderActivate(lightingShaderWithTexture);
+    model = glm::mat4(1.0f);
+    translate_origin = glm::translate(model, glm::vec3(0.0, 0.0, 0.0));
+    scale = glm::scale(model, glm::vec3(0.02, -0.1, 0.001));
+    translate = glm::translate(model, glm::vec3(-1.25f, 0.83f + 0.3f + 0.2f, -3.04f));
+    glm::mat4 rotateSecond = glm::rotate(model, glm::radians(-(seconds - 30) * 6.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    translate4 = glm::translate(model, glm::vec3(-1.25f, 0.83f + 0.3f + 0.2f, -3.04f));
+    model = alTogether * translate * rotateSecond * translate_origin * scale;
+    //model = alTogether * translate * translate_origin * rotateM * translate_origin * scale;
+    /*ourShader.setMat4("model", model);
+    ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);*/
+    drawCube(cubeVAO, lightingShader, model, 0.5, 0.5, 0.5);
+
+
+    // minute
+    model = glm::mat4(1.0f);
+    translate_origin = glm::translate(model, glm::vec3(0.0, 0.0, 0.0));
+    scale = glm::scale(model, glm::vec3(0.02, -0.08, 0.01));
+    translate = glm::translate(model, glm::vec3(-1.25f, 0.83f + 0.3f, -3.04f));
+    translate2 = glm::translate(model, glm::vec3(0.0f, 0.2f, 0.0f));
+    glm::mat4 rotateMinute = glm::rotate(model, glm::radians(-(minutes * 60 + seconds - 30) * 0.1f + 180.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = alTogether * translate2 * translate * rotateMinute * translate_origin * scale;
+    //model = alTogether * translate * translate_origin * rotateM * translate_origin * scale;
+    /*ourShader.setMat4("model", model);
+    ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);*/
+    drawCube(cubeVAO, lightingShader, model, 0.5, 0.5, 0.5);
+
+    // hour
+    model = glm::mat4(1.0f);
+    translate_origin = glm::translate(model, glm::vec3(0.0, 0.0, 0.0));
+    scale = glm::scale(model, glm::vec3(0.02, -0.06, 0.01));
+    translate = glm::translate(model, glm::vec3(-1.25f, 0.83f + 0.3f, -3.04f));
+    translate2 = glm::translate(model, glm::vec3(0.0f, 0.2f, 0.0f));
+    glm::mat4 rotateHour = glm::rotate(model, glm::radians(-(hours * 3600 + minutes * 60 + seconds - 30) * (1.0f / 120.0f)), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = alTogether * translate2 * translate * rotateHour * translate_origin * scale;
+    //model = alTogether * translate * translate_origin * rotateM * translate_origin * scale;
+    /*ourShader.setMat4("model", model);
+    ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);*/
+    drawCube(cubeVAO, lightingShader, model, 0.5, 0.5, 0.5);
+}
+
 
 
 
@@ -1352,11 +1685,15 @@ void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
     float road_length = 40;
     float road_height = 0.3;
 
+    glm::mat4 rotate = glm::mat4(1.0f);
 
     glm::mat4 model = glm::mat4(1.0f);
     glm::mat4 translate = glm::mat4(1.0f);
     glm::mat4 translate2 = glm::mat4(1.0f);
     glm::mat4 scale = glm::mat4(1.0f);
+    //glm::mat4 rotate = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+
     scale = glm::scale(model, glm::vec3(road_width, road_height, road_length));
     translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
     model = alTogether * scale * translate;
@@ -1505,8 +1842,8 @@ void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
     translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
     model = alTogether * translate2 * scale * translate;
     shaderActivate(lightingShader);
-    drawCube(cubeVAO, lightingShader, model, 0.6, 0.4, 0.2);
-    //field2->drawCubeWithTexture(lightingShaderWithTexture, model);
+    //drawCube(cubeVAO, lightingShader, model, 0.6, 0.4, 0.2);
+    field2->drawCubeWithTexture(lightingShaderWithTexture, model);
 
 
 
@@ -1588,6 +1925,21 @@ void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
 
 
 
+    model = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    translate2 = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate2 = glm::translate(model, glm::vec3(-60 , 2, -road_length / 2 - 9));
+    scale = glm::scale(model, glm::vec3(1, 5, 5));
+    translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
+    rotate = glm::rotate(rotate, glm::radians(270.0f), glm::vec3(0, 1, 0));
+    glm::mat4 scale2 = glm::mat4(1.0f);
+    model = alTogether  * scale * translate ;
+    scale2 = glm::scale(model, glm::vec3(1, 2, 2));
+
+    model = alTogether * translate2 * rotate*scale2;
+    shaderActivate(lightingShader);
+    Clock(cubeVAO, lightingShader, model, lightingShaderWithTexture);
 
 
 
@@ -1619,6 +1971,30 @@ void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
     shaderActivate(lightingShader);
     //drawCube(cubeVAO, lightingShader, model, 0.471, 0.196, 0.039);
     fazlul_lekha->drawCubeWithTexture(lightingShaderWithTexture, model);
+    
+    model = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    translate2 = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate2 = glm::translate(model, glm::vec3(-3, 8, -road_length / 2 - 12 ));
+    scale = glm::scale(model, glm::vec3(16, 4, 0.2));
+    translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
+    model = alTogether * translate2 * scale * translate;
+    shaderActivate(lightingShader);
+    wall->drawCubeWithTexture(lightingShaderWithTexture, model);
+
+    model = glm::mat4(1.0f);
+    translate = glm::mat4(1.0f);
+    translate2 = glm::mat4(1.0f);
+    scale = glm::mat4(1.0f);
+    translate2 = glm::translate(model, glm::vec3(-3, 8, -road_length / 2 - 12 - 6));
+    scale = glm::scale(model, glm::vec3(16, 6, 0.6));
+    translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
+    rotate = glm::rotate(rotate, glm::radians(90.0f), glm::vec3(1, 0, 0));
+
+    model = alTogether * translate2 * rotate* scale * translate;
+    shaderActivate(lightingShader);
+    wall->drawCubeWithTexture(lightingShaderWithTexture, model);
 
 
 
@@ -1654,7 +2030,7 @@ void road(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, S
     model = glm::mat4(1.0f);
     translate = glm::mat4(1.0f);
     translate2 = glm::mat4(1.0f);
-    glm::mat4 rotate = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
     scale = glm::mat4(1.0f);
     scale = glm::scale(model, glm::vec3(1, 1, 1));
 

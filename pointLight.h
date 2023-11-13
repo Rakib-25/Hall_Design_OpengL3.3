@@ -69,7 +69,7 @@ public:
             lightingShader.setFloat("directionLights[0].k_q", k_q);
         }
         
-        else
+        else if(lightNumber == 4)
         {
             lightingShader.setVec3("emissionLights[0].position", position);
             lightingShader.setVec3("emissionLights[0].ambient", ambientOn * ambient);
@@ -78,6 +78,16 @@ public:
             lightingShader.setFloat("emissionLights[0].k_c", k_c);
             lightingShader.setFloat("emissionLights[0].k_l", k_l);
             lightingShader.setFloat("emissionLights[0].k_q", k_q);
+        }
+        else if (lightNumber == 5)
+        {
+            lightingShader.setVec3("pointLights[1].position", position);
+            lightingShader.setVec3("pointLights[1].ambient", ambientOn * ambient);
+            lightingShader.setVec3("pointLights[1].diffuse", diffuseOn * diffuse);
+            lightingShader.setVec3("pointLights[1].specular", specularOn * specular);
+            lightingShader.setFloat("pointLights[1].k_c", k_c);
+            lightingShader.setFloat("pointLights[1].k_l", k_l);
+            lightingShader.setFloat("pointLights[1].k_q", k_q);
         }
     }
     bool ison = 1;
