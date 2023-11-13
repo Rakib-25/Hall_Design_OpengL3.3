@@ -1,0 +1,282 @@
+﻿  glad.c
+  main.cpp
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(193,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(194,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(196,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(273,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(274,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(278,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(329,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(330,25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\Sphere2.h(335,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(167,37): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(167,28): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(170,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(180,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(186,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(187,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(283,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(283,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(283,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(284,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(284,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(284,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(285,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(285,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(285,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(286,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(286,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(286,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(287,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(287,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(287,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(288,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(288,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(288,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(289,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(289,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(289,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(290,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(290,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(290,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(291,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(291,10): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(291,18): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(292,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(292,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(292,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(293,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(293,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(293,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(294,1): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(294,9): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(294,17): warning C4305: 'initializing': truncation from 'double' to '_Ty'
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(469,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(485,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(486,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(497,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(498,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(992,36): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(992,29): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(992,22): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1026,100): warning C4101: 'translate2': unreferenced local variable
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1132,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1142,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1142,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1142,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1146,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1148,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1173,20): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1175,20): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1198,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1198,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1198,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1208,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1208,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1208,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1217,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1217,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1217,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1227,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1227,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1227,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1323,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1336,74): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1336,61): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1353,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1368,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1382,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1396,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1410,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1508,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1508,51): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1508,46): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1841,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1844,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1845,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1846,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(1847,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2031,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2076,13): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2089,13): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2159,15): warning C4101: 'rotateYMatrix': unreferenced local variable
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2326,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2329,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2331,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2333,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2334,25): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2346,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2346,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2357,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2357,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2368,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2368,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2379,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2379,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2390,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2390,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2401,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2401,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2409,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2410,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2427,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2427,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2439,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2439,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2451,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2451,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2462,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2462,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2480,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2512,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2514,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2530,54): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2530,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2656,26): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2665,27): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\main.cpp(2701,29): warning C4305: '+=': truncation from 'double' to 'float'
+  Lighting.vcxproj -> C:\Users\User\OneDrive\Desktop\Project_graphics\Hall_Design_OpengL3.3\x64\Debug\Lighting.exe
