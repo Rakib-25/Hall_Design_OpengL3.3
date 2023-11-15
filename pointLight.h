@@ -89,6 +89,54 @@ public:
             lightingShader.setFloat("pointLights[1].k_l", k_l);
             lightingShader.setFloat("pointLights[1].k_q", k_q);
         }
+
+        else if (lightNumber == 6)
+        {
+            lightingShader.setVec3("pointLights[2].position", position);
+            lightingShader.setVec3("pointLights[2].ambient", ambientOn * ambient);
+            lightingShader.setVec3("pointLights[2].diffuse", diffuseOn * diffuse);
+            lightingShader.setVec3("pointLights[2].specular", specularOn * specular);
+            lightingShader.setFloat("pointLights[2].k_c", k_c);
+            lightingShader.setFloat("pointLights[2].k_l", k_l);
+            lightingShader.setFloat("pointLights[2].k_q", k_q);
+        }
+
+
+        else if (lightNumber == 7)
+        {
+            lightingShader.setVec3("pointLights[3].position", position);
+            lightingShader.setVec3("pointLights[3].ambient", ambientOn * ambient);
+            lightingShader.setVec3("pointLights[3].diffuse", diffuseOn * diffuse);
+            lightingShader.setVec3("pointLights[3].specular", specularOn * specular);
+            lightingShader.setFloat("pointLights[3].k_c", k_c);
+            lightingShader.setFloat("pointLights[3].k_l", k_l);
+            lightingShader.setFloat("pointLights[3].k_q", k_q);
+        }
+
+        else if (lightNumber == 8)
+        {
+            lightingShader.setVec3("pointLights[4].position", position);
+            lightingShader.setVec3("pointLights[4].ambient", ambientOn * ambient);
+            lightingShader.setVec3("pointLights[4].diffuse", diffuseOn * diffuse);
+            lightingShader.setVec3("pointLights[4].specular", specularOn * specular);
+            lightingShader.setFloat("pointLights[4].k_c", k_c);
+            lightingShader.setFloat("pointLights[4].k_l", k_l);
+            lightingShader.setFloat("pointLights[4].k_q", k_q);
+        }
+
+
+        else if (lightNumber == 9)
+        {
+            lightingShader.setVec3("pointLights[5].position", position);
+            lightingShader.setVec3("pointLights[5].ambient", ambientOn * ambient);
+            lightingShader.setVec3("pointLights[5].diffuse", diffuseOn * diffuse);
+            lightingShader.setVec3("pointLights[5].specular", specularOn * specular);
+            lightingShader.setFloat("pointLights[5].k_c", k_c);
+            lightingShader.setFloat("pointLights[5].k_l", k_l);
+            lightingShader.setFloat("pointLights[5].k_q", k_q);
+        }
+
+
     }
     bool ison = 1;
     bool isOn()

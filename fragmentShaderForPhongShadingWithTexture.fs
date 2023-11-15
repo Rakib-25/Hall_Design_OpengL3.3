@@ -96,6 +96,12 @@ void main()
 
     result += CalcPointLight(material, pointLights[0], N, FragPos, V);  
     result += CalcPointLight(material, pointLights[1], N, FragPos, V);  
+    result += CalcPointLight(material, pointLights[2], N, FragPos, V);  
+    result += CalcPointLight(material, pointLights[3], N, FragPos, V);
+    result += CalcPointLight(material, pointLights[4], N, FragPos, V);  
+    result += CalcPointLight(material, pointLights[5], N, FragPos, V);  
+    
+
     result += CalcDirectLight(material, directionLights[0], N, FragPos, V);
     FragColor = vec4(result, 1.0);
 }

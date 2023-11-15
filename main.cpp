@@ -50,13 +50,15 @@ void pond(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm
 void Tree_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
 void Clock(unsigned int& cubeVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
 void getCurrentTime(int& hours, int& minutes, int& seconds);
+void Man_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture);
 
 
 
 
 
 float rotateClock = 0;
-//bool sign = 1;
+float walk = 0;
+bool sign1 = 1;
 
 
 
@@ -72,15 +74,14 @@ public:
     const double pi = 3.14159265389;
     const int nt = 40;
     const int ntheta = 20;
+    float red;
+    float green;
+    float blue;
     Curve(vector<float>& tmp)
     {
         this->cntrlPoints = tmp;
         this->fishVAO = hollowBezier(cntrlPoints.data(), ((unsigned int)cntrlPoints.size() / 3) - 1);
-        cout << cntrlPoints.size() << endl;
-        cout << coordinates.size() << endl;
-        cout << normals.size() << endl;
-        cout << indices.size() << endl;
-        cout << vertices.size() << endl;
+        
     }
     ~Curve()
     {
@@ -89,13 +90,13 @@ public:
         glDeleteBuffers(1, &bezierVBO);
         glDeleteBuffers(1, &bezierEBO);
     }
-    void draw(Shader& lightingShader, glm::mat4 model)
+    void draw(Shader& lightingShader, glm::mat4 model, float red = 0, float green = 0.6, float blue = 0)
     {
         /// Fish
         lightingShader.use();
         lightingShader.setMat4("model", model);
-        lightingShader.setVec3("material.ambient", glm::vec3(0.0f, 0.6f, 0.0f));
-        lightingShader.setVec3("material.diffuse", glm::vec3(0.0f, 0.6f, 0.0f));
+        lightingShader.setVec3("material.ambient", glm::vec3(red, green, blue));
+        lightingShader.setVec3("material.diffuse", glm::vec3(red, green, blue));
         lightingShader.setVec3("material.specular", glm::vec3(1.0f, 1.0f, 1.0f));
         lightingShader.setFloat("material.shininess", 32.0f);
 
@@ -365,10 +366,63 @@ vector<float>leaf = {
 -0.0650, 1.3850, 5.1000,
 };
 
+vector<float>body = {
+-0.1300, 2.1900, 5.1000,
+-0.2100, 2.1850, 5.1000,
+-0.2700, 2.1850, 5.1000,
+-0.3450, 2.1500, 5.1000,
+-0.3750, 2.0800, 5.1000,
+-0.3900, 1.9450, 5.1000,
+-0.4300, 1.7800, 5.1000,
+-0.4850, 1.6200, 5.1000,
+-0.5450, 1.4600, 5.1000,
+-0.6150, 1.2700, 5.1000,
+-0.7000, 1.1500, 5.1000,
+-0.7850, 1.0600, 5.1000,
+-0.7450, 0.7400, 5.1000,
+-0.7400, 0.7350, 5.1000,
+-0.8100, 0.8850, 5.1000,
+-0.5550, 0.5800, 5.1000,
+-0.2050, 0.4800, 5.1000,
+-0.1050, 0.4700, 5.1000,
+-0.0350, 0.4650, 5.1000,
+};
+vector<float>leg = {
+0.0650, 1.8500, 5.1000,
+-0.0500, 1.8650, 5.1000,
+-0.1900, 1.8450, 5.1000,
+-0.2700, 1.8250, 5.1000,
+-0.3050, 1.7350, 5.1000,
+-0.3050, 1.5350, 5.1000,
+-0.2700, 1.3400, 5.1000,
+-0.2500, 1.2000, 5.1000,
+-0.2950, 1.0750, 5.1000,
+-0.2300, 1.0700, 5.1000,
+-0.2550, 0.9300, 5.1000,
+-0.3150, 0.8650, 5.1000,
+-0.2600, 0.7550, 5.1000,
+-0.2350, 0.6900, 5.1000,
+-0.1950, 0.5450, 5.1000,
+-0.1450, 0.4000, 5.1000,
+-0.0750, 0.2950, 5.1000,
+-0.0500, 0.1950, 5.1000,
+-0.0300, 0.1350, 5.1000,
+0.0150, 0.1100, 5.1000,
+0.0550, 0.0900, 5.1000,
+0.0850, 0.0650, 5.1000,
+0.1150, 0.0400, 5.1000,
+0.1500, 0.0200, 5.1000,
+};
+
+
+
+
+
+
 
 
 // settings
-const unsigned int SCR_WIDTH = 1200;
+const unsigned int SCR_WIDTH = 1600;
 const unsigned int SCR_HEIGHT = 800;
 
 // modelling transform
@@ -399,41 +453,53 @@ BasicCamera basic_camera(eyeX, eyeY, eyeZ, lookAtX, lookAtY, lookAtZ, V);
 
 // positions of the point lights
 glm::vec3 pointLightPositions[] = {
-    glm::vec3(0.0f,  1.5f,  -0.75f),
-    glm::vec3(0.0f,  1.5f,  0.0f),
-    glm::vec3(1.0f,  4.5f,  0.5f),
-    glm::vec3(0.0f,  3.0f,  0.0f),
-    glm::vec3(0.0f,  3.5f,  5.0f)
+    glm::vec3(0.0f,  15.5f,  -30.75f),
+    glm::vec3(0.0f,  2.5f,  -15.5f),
+    glm::vec3(100.0f,  100.0f,  100.0f),
+    glm::vec3(-0.8f,  2.0f,  0.0f),
+    glm::vec3(-0.8f,  2.5f,  4.5f),
+    glm::vec3(-0.8f,  2.5f,  -5.5f),
+    glm::vec3(-0.8f,  2.5f,  -25.5f),
+    glm::vec3(-20.8f,  9.5f,  -43.7f),
+    glm::vec3(4.2f,  9.5f,  -35.5f),
+
+
+
 
 };
+
+//specular LIght
 PointLight pointlight1(
 
     pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z,  // position
-    0.7f, 0.7f, 0.7f,     // ambient
-    0.7f, 0.7f, 0.7f,      // diffuse
+    0.1f, 0.0f, 0.0f,     // ambient
+    1, 0, 0,      // diffuse
     0.7f, 0.7f, 0.7f,        // specular
     1.0f,   //k_c
     0.09f,  //k_l
     0.032f, //k_q
     1       // light number
 );
+
+
+//point_light
 PointLight pointlight2(
 
     pointLightPositions[1].x, pointLightPositions[1].y, pointLightPositions[1].z,  // position
-    0.7f, 0.7f, 0.7f,     // ambient
-    0.7f, 0.7f, 0.7f,      // diffuse
-    0.7f, 0.7f, 0.7f,         // specular
+    0.1f, 0.0f, 0.0f,     // ambient
+    1.0f, 0.0f, 0.0f,      // diffuse
+    0.7f, 0.0f, 0.0f,         // specular
     1.0f,   //k_c
     0.09f,  //k_l
     0.032f, //k_q
     2       // light number
 );
 
-
+//directional Light = 3
 PointLight pointlight3(
 
     pointLightPositions[2].x, pointLightPositions[2].y, pointLightPositions[2].z,  // position
-    0.7f, 0.7f, 0.7f,     // ambient
+    0.4f, 0.4f, 0.4f,     // ambient
     0.7f, 0.7f, 0.7f,      // diffuse
     0.7f, 0.7f, 0.7f,         // specular
     1.0f,   //k_c
@@ -458,14 +524,68 @@ PointLight pointlight4(
 PointLight pointlight5(
 
     pointLightPositions[4].x , pointLightPositions[4].y , pointLightPositions[4].z ,  // position
-    0.07f, 0.0f, 0.0f,     // ambient
-    0.7f, 0.f, 0.f,      // diffuse
-    0.7f, 0.7f, 0.7f,         // specular
+    0.0f, 0.1f, 0.0f,     // ambient
+    0.0f, 1.0f, 0.0f,      // diffuse
+    0.0f, 0.7f, 0.0f,         // specular
     1.0f,   //k_c
     0.09f,  //k_l
     0.032f, //k_q
     5      // light number
 );
+
+PointLight pointlight6(
+
+    pointLightPositions[5].x, pointLightPositions[5].y, pointLightPositions[5].z,  // position
+    0.0f, 0.0f, 0.1f,     // ambient
+    0.0f, 0.0f, 0.7f,      // diffuse
+    0.f, 0.f, 0.7f,         // specular
+    1.0f,   //k_c
+    0.09f,  //k_l
+    0.032f, //k_q
+    6      // light number
+);
+
+
+PointLight pointlight7(
+
+    pointLightPositions[6].x, pointLightPositions[6].y, pointLightPositions[6].z,  // position
+    0.1f, 0.1f, 0.1f,     // ambient
+    0.9f, 0.9f, 0.9f,      // diffuse
+    0.9f, 0.9f, 0.7f,         // specular
+    1.0f,   //k_c
+    0.09f,  //k_l
+    0.032f, //k_q
+    7      // light number
+);
+
+
+PointLight pointlight8(
+
+    pointLightPositions[7].x, pointLightPositions[7].y, pointLightPositions[7].z,  // position
+    0.1f, 0.1f, 0.1f,     // ambient
+    0.9f, 0.9f, 0.9f,      // diffuse
+    0.9f, 0.9f, 0.7f,         // specular
+    1.0f,   //k_c
+    0.09f,  //k_l
+    0.032f, //k_q
+    8      // light number
+);
+
+
+PointLight pointlight9(
+
+    pointLightPositions[8].x, pointLightPositions[8].y, pointLightPositions[8].z,  // position
+    0.1f, 0.1f, 0.1f,     // ambient
+    0.9f, 0.9f, 0.9f,      // diffuse
+    0.9f, 0.9f, 0.7f,         // specular
+    1.0f,   //k_c
+    0.09f,  //k_l
+    0.032f, //k_q
+    9      // light number
+);
+
+
+
 
 
 // light settings
@@ -500,7 +620,7 @@ float door_open1 = 0;
 float door_closed = 0;
 float door_closed1 = 0;
 
-Curve* fis, *tre , *lef;
+Curve* fis, *tre , *lef , *bod , *legg;
 Cube* tmp,*foam,*footpath,*fazlul, *clock1, *room_window, *gate_left, *gate_right, *fazlul_lekha, *sher, *pillow, *pillow1,*head,*relling, *head1, *floor1, *roof, *wall, *road1, *devider, *grass, * field, *door1, *field1, * field2;
 Sphere2* sphere;
 
@@ -1085,6 +1205,12 @@ int main()
     Curve Leaf(leaf);
     lef = &Leaf;
 
+    Curve Body(body);
+    bod = &Body;
+
+    Curve Leg(leg);
+    legg = &Leg;
+
 
     while (!glfwWindowShouldClose(window))
     {
@@ -1117,6 +1243,13 @@ int main()
         pointlight4.setUpPointLight(lightingShader);
 
         pointlight5.setUpPointLight(lightingShader);
+
+        pointlight6.setUpPointLight(lightingShader);
+
+        pointlight7.setUpPointLight(lightingShader);
+        pointlight8.setUpPointLight(lightingShader);
+        pointlight9.setUpPointLight(lightingShader);
+
         
         
         // activate shader
@@ -1178,16 +1311,90 @@ int main()
 
         // we now draw as many light bulbs as we have point lights.
         glBindVertexArray(lightCubeVAO);
-        for (unsigned int i = 0; i < 4; i++)
-        {
-            model = glm::mat4(1.0f);
-            model = glm::translate(model, pointLightPositions[i]);
-            model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-            ourShader.setMat4("model", model);
-            ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
-            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-            //glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        //for (unsigned int i = 0; i < 5; i++)
+        //{
+        //    model = glm::mat4(1.0f);
+        //    model = glm::translate(model, pointLightPositions[i]);
+        //    model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        //    ourShader.setMat4("model", model);
+        //    ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+        //    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+        //    //glDrawArrays(GL_TRIANGLES, 0, 36);
+        //}
+
+
+
+        //red
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[0]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(0.8f, 0.0f, 0.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        //white
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[2]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(0.8f, 0.8f, 0.8f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        //red
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[1]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(0.8f, 0.0, 0.0));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        //green
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[4]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(0.0f, 0.8f, 0.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+        //Blue
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[5]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(0.0f, 0.0f, 1.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        //white
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[6]);
+        model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(1.0f, 1.0f, 1.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[7]);
+        model = glm::scale(model, glm::vec3(0.5f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(1.0f, 1.0f, 1.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, pointLightPositions[8]);
+        model = glm::scale(model, glm::vec3(0.5f)); // Make it a smaller cube
+        ourShader.setMat4("model", model);
+        ourShader.setVec3("color", glm::vec3(1.0f, 1.0f, 1.0f));
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+
+
+
+
 
         
 
@@ -1214,6 +1421,13 @@ int main()
         pointlight4.setUpPointLight(lightingShaderWithTexture);
 
         pointlight5.setUpPointLight(lightingShaderWithTexture);
+
+        pointlight6.setUpPointLight(lightingShaderWithTexture);
+        pointlight7.setUpPointLight(lightingShaderWithTexture);
+        pointlight8.setUpPointLight(lightingShaderWithTexture);
+        pointlight9.setUpPointLight(lightingShaderWithTexture);
+
+
 
       
 
@@ -1391,6 +1605,45 @@ void FazlulHaqueHall(unsigned int& cubeVAO,unsigned int&cVAO, Shader& lightingSh
     model = alTogether * translate2* scale * translate;
 
     Tree_Making(cubeVAO, cVAO, lightingShader, model, lightingShaderWithTexture);
+
+
+    
+    
+    /*if (moveFish >= 20)
+    {
+        sign *= -1;
+        angle += 180;
+    }
+    if (walk <= 5)
+    {
+        sign *= 1;
+        angle += 180;
+    }*/
+
+   /* if (walk > 20)
+        walk -= 0.5;*/
+
+    if (walk >= 20) {
+        sign1 = 0;
+    }
+    else if (walk <= -20) {
+        sign1 = 1;
+    }
+    if (sign1 == 1) {
+        walk += .3;
+    }
+    else
+        walk -= .3;
+
+
+
+
+    //cout << walk << endl;
+
+    translate2 = glm::translate(glm::mat4(1.0f), glm::vec3(0.5, -0.8, walk));
+    model = alTogether * translate2 * scale * translate;
+
+    Man_Making(cubeVAO, cVAO, lightingShader, model, lightingShaderWithTexture);
     
     for (int i = -3; i < 3; i++) {
 
@@ -1528,6 +1781,111 @@ void Tree_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShad
 
 }
 
+void Man_Making(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture)
+{
+    glm::mat4 model = glm::mat4(1.0f);
+    glm::mat4 translate = glm::mat4(1.0f);
+    glm::mat4 translate2 = glm::mat4(1.0f);
+    glm::mat4 translate3 = glm::mat4(1.0f);
+    glm::mat4 scale = glm::mat4(1.0f);
+    glm::mat4 scale2 = glm::mat4(1.0f);
+    glm::mat4 rotate = glm::mat4(1.0f);
+    glm::mat4 rotatez = glm::mat4(1.0f);
+    scale = glm::scale(model, glm::vec3(1, 1, 1));
+    translate = glm::translate(model, glm::vec3(-0.5, 0, -0.5));
+    translate2 = glm::translate(model, glm::vec3(-4, 2, 0));
+
+    model = alTogether * scale * translate * translate2;
+    bod->draw(lightingShader, model, 0.3, 0.3, 0.5);
+
+    model = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.7, -1, 0.7));
+
+    translate2 = glm::translate(model, glm::vec3(-4 - 0.2, 1+2 - 0.2, 0));
+    rotate = glm::rotate(rotate, glm::radians(-10.0f), glm::vec3(0, 0, 1));
+    rotatez = glm::rotate(rotate, glm::radians(rotateClock), glm::vec3(1, 0, 0));
+
+    model = alTogether * scale * translate *  translate2 * rotatez * rotate* scale2 ;
+    legg->draw(lightingShader, model, 0.9, 0.8, 0.5);
+
+
+
+   
+
+    rotate = glm::mat4(1.0f);
+
+    model = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.7, -1, 0.7));
+
+    translate2 = glm::translate(model, glm::vec3(-4 + 0.2, 1 + 2 - 0.2, 0));
+    rotate = glm::rotate(rotate, glm::radians(10.0f), glm::vec3(0, 0, 1));
+    rotatez = glm::rotate(rotate, glm::radians(-rotateClock), glm::vec3(1, 0, 0));
+
+    model = alTogether * scale * translate * translate2 * rotatez * rotate * scale2;
+    legg->draw(lightingShader, model, 0.9, 0.8, 0.5);
+
+
+
+
+
+
+
+    //hand
+    model = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.7, -0.7, 0.7));
+
+    translate2 = glm::translate(model, glm::vec3(-4 + 0.2, 4, 0));
+    rotate = glm::rotate(rotate, glm::radians(15.0f), glm::vec3(0, 0, 1));
+    rotatez = glm::rotate(rotate, glm::radians(rotateClock), glm::vec3(1, 0, 0));
+
+    model = alTogether * scale * translate * translate2 * rotatez * rotate * scale2;
+    //model = alTogether * scale * translate * translate2 * rotate * scale2;
+    legg->draw(lightingShader, model, 0.9, 0.8, 0.5);
+
+    model = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.7, -0.7, 0.7));
+
+    translate2 = glm::translate(model, glm::vec3(-4 - 0.2, 4, 0));
+    rotate = glm::rotate(rotate, glm::radians(-15.0f), glm::vec3(0, 0, 1));
+    rotatez = glm::rotate(rotate, glm::radians(-rotateClock), glm::vec3(1, 0, 0));
+
+    model = alTogether * scale * translate * translate2 * rotatez * rotate * scale2;
+    //model = alTogether * scale * translate * translate2 * rotate * scale2;
+    legg->draw(lightingShader, model, 0.9, 0.8, 0.5);
+
+    /*model = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.7, 0.7, 0.7));
+
+    translate2 = glm::translate(model, glm::vec3(-4 - 1.2, 2.8, 0));
+    rotate = glm::rotate(rotate, glm::radians(-35.0f), glm::vec3(0, 0, 1));
+
+
+    model = alTogether * scale * translate * translate2 * rotate * scale2;
+    legg->draw(lightingShader, model, 0.9, 0.8, 0.5);*/
+
+
+
+    model = glm::mat4(1.0f);
+    rotate = glm::mat4(1.0f);
+
+    scale2 = glm::scale(model, glm::vec3(0.45, 0.45, 0.45));
+
+    translate2 = glm::translate(model, glm::vec3(-4 , 4.8, 0));
+    rotate = glm::rotate(rotate, glm::radians(-35.0f), glm::vec3(0, 0, 1));
+
+    model = alTogether * scale * translate * translate2 * rotate * scale2;
+    sphere->drawSphereWithTexture(lightingShaderWithTexture, model);
+
+
+}
 
 void piller(unsigned int& cubeVAO, unsigned int& cVAO, Shader& lightingShader, glm::mat4 alTogether, Shader& lightingShaderWithTexture)
 {
